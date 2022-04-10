@@ -35,13 +35,14 @@ char search(){
 
 
 
-
-void Init() {
-
-}
-
 void createNew() {
-
+    char nameInput[18];
+    scanf("s", nameInput);
+    s = (NODE *) malloc(sizeof (NODE));
+    strcpy(s->name, nameInput);
+    s->next = p->next;
+    p->next = s;
+    p = s;
 }
 
 
@@ -74,6 +75,10 @@ void showMenu() {
 
 
 int main() {
+    head = (NODE *) malloc(sizeof (NODE));
+    head->next = NULL;
+    p = head;
+
 
 
     return 0;
