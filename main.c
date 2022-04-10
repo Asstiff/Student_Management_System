@@ -203,6 +203,7 @@ void showMenu() {
     printf("\n4 - 索引");
     printf("\n5 - 排序");
     printf("\n6 - 展示全部");
+    printf("\n7 - 退出");
     printf("\n\n输入你中意的数字…\n");
     scanf("%d", &result);
 
@@ -235,6 +236,9 @@ void showMenu() {
             displayAll();
             system("read -n 1 -s -p \"任务完成。按下 Enter 键返回菜单。\"");
             showMenu();
+            break;
+        case 7:
+            system("read -n 1 -s -p \"感谢使用，按任意键退出。\"");
             break;
         default:
             printf("\n-----------------\n");
