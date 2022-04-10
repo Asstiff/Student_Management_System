@@ -1,0 +1,4 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja /Users/mastiffli/Desktop/课堂归档/C语言/学生管理系统
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/mastiffli/Desktop/课堂归档/C语言/学生管理系统/cmake-build-debug
