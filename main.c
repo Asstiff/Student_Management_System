@@ -160,7 +160,7 @@ void swap(){
     char nameCache[18];
     int gradeCache;
     int codeCache;
-    for(int i = 0; i < studentNumber+20; i++){
+    for(int i = 0; i < studentNumber; i++){
         p = head->next;
         while(p->next){
             if(p->grade < p->next->grade){
