@@ -5,7 +5,7 @@
 
 
 typedef struct node{
-    char name[80];
+    char name[18];
     int code;
     int grade;
     int index;
@@ -28,9 +28,15 @@ void indexing(){
 
 }
 
-char search(){
+void search(){
+    p = head;
     char targetName[18];
     scanf("%s", targetName);
+    while (p->next != NULL && strcmp(p->next->name,&targetName)){
+        p = p->next;
+    }
+    printf("\n%s的成绩是%d，他的学号是%d", p->next->name, p->next->grade, p->next->code);
+
 
 }
 
