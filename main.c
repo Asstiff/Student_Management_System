@@ -70,7 +70,7 @@ void searchByName(){
     }
     else{
         printf("\n-----------------\n");
-        printf("没有找到，请重新输入。\n");
+        printf("没有找到，请重新输入。");
         printf("\n-----------------\n");
         searchByName();
     }
@@ -94,7 +94,7 @@ void searchByCode(){
     }
     else{
         printf("\n-----------------\n");
-        printf("没有找到，请重新输入。\n");
+        printf("没有找到，请重新输入。");
         printf("\n-----------------\n");
         searchByCode();
     }
@@ -119,7 +119,7 @@ void searchByGrade(){
     }
     if(numFound == 0){
         printf("\n-----------------\n");
-        printf("没有找到，请重新输入。\n");
+        printf("没有找到，请重新输入。");
         printf("\n-----------------\n");
         searchByGrade();
     }
