@@ -3,6 +3,8 @@
 #include <string.h>
 
 int ifInitialized = 0;
+int studentNumber;
+
 
 typedef struct node{
     char name[18];
@@ -49,6 +51,7 @@ void indexing(){
         indexCount++;
         p = p->next;
     }
+    studentNumber = (indexCount-1);
     printf("\n索引完成");
     printf("\n-----------------\n");
     printf("\n\n-----------------\n");
@@ -151,7 +154,11 @@ void skip(){
 }
 
 void swap(){
-    int grades;
+    char nameCache[18];
+    int codeCache;
+    int gradeCache;
+
+
 }
 
 
@@ -232,10 +239,11 @@ void showMenu() {
             showMenu();
             break;
         case 5:
+            swap();
+            showMenu();
             break;
         case 6:
             displayAll();
-            system("read -n 1 -s -p \"任务完成。按下 Enter 键返回菜单。\"");
             showMenu();
             break;
         case 7:
