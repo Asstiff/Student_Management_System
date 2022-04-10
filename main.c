@@ -17,15 +17,34 @@ NODE *head, *p, *s;
 
 
 
-
-
-
-
-
 void showMenu();
 
-void indexing(){
 
+void displayAll(){
+    p = head;
+    while (p->next != NULL){
+        if (p->next->index) {
+            printf("\n%s的成绩是%d，他的学号是%d，他的索引是%d", p->next->name, p->next->grade, p->next->code, p->next->index);
+        }
+        else{
+            printf("\n%s的成绩是%d，他的学号是%d", p->next->name, p->next->grade, p->next->code);
+        }
+        p = p->next;
+    }
+};
+
+
+void indexing(){
+    p = head;
+    int indexCount = 1;
+    printf("正在索引");
+    while (p->next != NULL){
+        p->next->index = indexCount;
+        indexCount++;
+        p = p->next;
+    }
+    printf("\n索引完成");
+    showMenu();
 }
 
 void search(){
@@ -35,7 +54,12 @@ void search(){
     while (p->next != NULL && strcmp(p->next->name,&targetName)){
         p = p->next;
     }
-    printf("\n%s的成绩是%d，他的学号是%d", p->next->name, p->next->grade, p->next->code);
+    if (p->index) {
+        printf("\n%s的成绩是%d，他的学号是%d，他的索引是%d", p->next->name, p->next->grade, p->next->code, p->next->index);
+    }
+    else{
+        printf("\n%s的成绩是%d，他的学号是%d", p->next->name, p->next->grade, p->next->code);
+    }
     showMenu();
 }
 
@@ -64,8 +88,9 @@ void showMenu() {
     printf("\n1 - 插入数据");
     printf("\n2 - 删除数据");
     printf("\n3 - 查找信息");
-    printf("\n4 - 统计个数");
+    printf("\n4 - 索引");
     printf("\n5 - 排序");
+    printf("\n6 - 展示全部");
     printf("\n\n输入你中意的数字…\n");
     scanf("%d", &result);
 
@@ -78,8 +103,12 @@ void showMenu() {
             search();
             break;
         case 4:
+            indexing();
             break;
         case 5:
+            break;
+        case 6:
+            displayAll();
             break;
     };
 }
