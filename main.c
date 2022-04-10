@@ -42,7 +42,7 @@ void createNew() {
     scanf("%d", &gradeInput);
     s = (NODE *) malloc(sizeof (NODE));
     strcpy(s->name, nameInput);
-    strcpy(s->grade, gradeInput);
+    s->grade = gradeInput;
     s->next = p->next;
     p->next = s;
     p = s;
@@ -84,7 +84,7 @@ int main() {
     for(int i = 0; i<1; i--) {
         createNew();
         printf("结果 - %s\n", p->name);
-        if(s->grade == "1"){
+        if(s->grade == 1){
             p = head;
             break;
         }
