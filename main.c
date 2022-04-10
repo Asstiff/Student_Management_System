@@ -33,7 +33,7 @@ char search(){
     printf("输入姓名");
     scanf("%s", target);
     printf("%s", s->name);
- /*   while(p->next->name != target){
+   while(p->next->name != target){
         p = p->next;
     }
     if (p->next){
@@ -43,7 +43,7 @@ char search(){
     else{
         printf("NOOOOOPE");
         return NULL;
-    }*/
+    }
 }
 
 
