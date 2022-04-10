@@ -160,26 +160,28 @@ void swap(){
     char nameCache[18];
     int gradeCache;
     int codeCache;
-    for(int i = 0; i < studentNumber-2; i++){
-        p = s;
-        for(int j = i; i < studentNumber-2; j++){
-            if(p->next->grade < p->next->next->grade){
-                strcpy(nameCache, p->next->next->name);
-                strcpy(p->next->next->name, p->next->name);
-                strcpy(p->next->name, nameCache);
+    for(int i = 0; i < studentNumber+20; i++){
+        p = head->next;
+        while(p->next){
+            if(p->grade < p->next->grade){
+                strcpy(nameCache, p->next->name);
+                strcpy(p->next->name, p->name);
+                strcpy(p->name, nameCache);
 
-                gradeCache = p->next->next->grade;
-                p->next->next->grade = p->next->grade;
-                p->next->grade = gradeCache;
+                gradeCache = p->next->grade;
+                p->next->grade = p->grade;
+                p->grade = gradeCache;
 
-                codeCache = p->next->next->code;
-                p->next->next->code = p->next->code;
-                p->next->code = codeCache;
+                codeCache = p->next->code;
+                p->next->code = p->code;
+                p->code = codeCache;
             }
             p = p->next;
         }
-        s = s->next;
     }
+    printf("\n-----------------\n");
+    printf("排序完成。");
+    printf("\n-----------------\n");
 }
 
 
@@ -292,8 +294,8 @@ int main() {
     scanf("%d", &count);
     for(int i = 0; i<count; i++) {
 
-        printf("\n录入初始数据。以成绩为 -1 结束。\n");
-        printf("\n｜名称｜   ｜成绩｜   ｜学号｜\n");
+        printf("\n录入初始数据。");
+        printf("\n｜名称｜ ｜成绩｜ ｜学号｜      %d/%d\n", i+1, count);
         createNew();
         printf("结果 - %s\n", p->name);
         if(s->grade == 1){
