@@ -29,6 +29,8 @@ void indexing(){
 }
 
 char search(){
+    char targetName[18];
+    scanf("%s", targetName);
 
 }
 
