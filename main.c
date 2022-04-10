@@ -5,7 +5,6 @@
 int ifInitialized = 0;
 int studentNumber;
 
-
 typedef struct node{
     char name[18];
     int code;
@@ -357,10 +356,6 @@ int main() {
         printf("\n｜名称｜ ｜成绩｜ ｜学号｜      %d/%d\n", i+1, count);
         createNew();
         printf("已录入%s的信息\n", p->name);
-        if(s->grade == 1){
-            p = head;
-            break;
-        }
     }
 
     ifInitialized = 1;
