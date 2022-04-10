@@ -22,7 +22,7 @@ NODE *head, *p, *s;
 
 
 
-
+void showMenu();
 
 void indexing(){
 
@@ -36,8 +36,7 @@ void search(){
         p = p->next;
     }
     printf("\n%s的成绩是%d，他的学号是%d", p->next->name, p->next->grade, p->next->code);
-
-
+    showMenu();
 }
 
 
@@ -62,7 +61,7 @@ void createNew() {
 
 void showMenu() {
     int result;
-    printf("1 - 插入数据");
+    printf("\n1 - 插入数据");
     printf("\n2 - 删除数据");
     printf("\n3 - 查找信息");
     printf("\n4 - 统计个数");
