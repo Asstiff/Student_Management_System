@@ -89,7 +89,7 @@ int main() {
         printf("结果 - %s\n", p->name);
         if(s->grade == 1){
             p = head;
-            printf("\n第一个学生是%s，他的成绩是%d，他的学号是%d", head->next->name, head->next->grade, head->next->code);
+            printf("\n第一个学生是%s，他的成绩是%d，他的学号是%d", p->next->name, p->next->grade, p->next->code);
             printf("\n第二个学生是%s，他的成绩是%d，他的学号是%d", head->next->next->name, head->next->next->grade, head->next->next->code);
             break;
         }
