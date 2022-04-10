@@ -78,7 +78,17 @@ int main() {
     head = (NODE *) malloc(sizeof (NODE));
     head->next = NULL;
     p = head;
+    for(int i = 0; i<1; i--) {
+        createNew();
+        printf("结果 - %s\n", p->name);
+        if(s->grade == 1){
+            p = head;
+            break;
+        }
+    }
 
+
+    showMenu();
 
 
     return 0;
