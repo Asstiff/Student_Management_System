@@ -41,6 +41,7 @@ void displayAll(){
 void indexing(){
     p = head;
     int indexCount = 1;
+
     printf("\n-----------------\n");
     printf("正在索引…");
     while (p->next != NULL){
@@ -63,7 +64,7 @@ void searchByName(){
         p = p->next;
     }
     if(p->next){
-        if (p->index) {
+        if (p->next->index) {
             printf("\n-----------------\n");
             printf("%s的成绩是%d，他的学号是%d，他的索引是%d", p->next->name, p->next->grade, p->next->code, p->next->index);
             printf("\n-----------------\n");
@@ -93,14 +94,14 @@ void searchByCode(){
         p = p->next;
     }
     if(p->next){
-        if (p->index) {
+        if (p->next->index) {
             printf("\n-----------------\n");
-            printf("%s的成绩是%d，他的学号是%d，他的索引是%d\n", p->next->name, p->next->grade, p->next->code, p->next->index);
+            printf("%s的成绩是%d，他的学号是%d，他的索引是%d", p->next->name, p->next->grade, p->next->code, p->next->index);
             printf("\n-----------------\n");
         }
         else{
             printf("\n-----------------\n");
-            printf("%s的成绩是%d，他的学号是%d\n", p->next->name, p->next->grade, p->next->code);
+            printf("%s的成绩是%d，他的学号是%d", p->next->name, p->next->grade, p->next->code);
             printf("\n-----------------\n");
         }
     }
@@ -150,7 +151,7 @@ void skip(){
 }
 
 void swap(){
-
+    int grades;
 }
 
 
