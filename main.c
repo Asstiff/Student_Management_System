@@ -37,9 +37,12 @@ char search(){
 
 void createNew() {
     char nameInput[18];
-    scanf("s", nameInput);
+    int gradeInput;
+    scanf("%s", nameInput);
+    scanf("%d", &gradeInput);
     s = (NODE *) malloc(sizeof (NODE));
     strcpy(s->name, nameInput);
+    strcpy(s->grade, gradeInput);
     s->next = p->next;
     p->next = s;
     p = s;
@@ -81,7 +84,7 @@ int main() {
     for(int i = 0; i<1; i--) {
         createNew();
         printf("结果 - %s\n", p->name);
-        if(s->grade == 1){
+        if(s->grade == "1"){
             p = head;
             break;
         }
