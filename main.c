@@ -71,7 +71,7 @@ void createNew() {
 
     s->next = p->next;
 
-    p->next = &s;
+    p->next = s;
     p = s;
 }
 
