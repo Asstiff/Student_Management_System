@@ -43,14 +43,12 @@ void indexing(){
     int indexCount = 1;
     printf("\n-----------------\n");
     printf("正在索引…");
-    printf("\n-----------------\n");
     while (p->next != NULL){
         p->next->index = indexCount;
         indexCount++;
         p = p->next;
     }
-    printf("\n-----------------\n");
-    printf("索引完成");
+    printf("\n索引完成");
     printf("\n-----------------\n");
     printf("\n\n-----------------\n");
     printf("总共 %d 名学生", indexCount-1);
@@ -97,12 +95,12 @@ void searchByCode(){
     if(p->next){
         if (p->index) {
             printf("\n-----------------\n");
-            printf("%s的成绩是%d，他的学号是%d，他的索引是%d", p->next->name, p->next->grade, p->next->code, p->next->index);
+            printf("%s的成绩是%d，他的学号是%d，他的索引是%d\n", p->next->name, p->next->grade, p->next->code, p->next->index);
             printf("\n-----------------\n");
         }
         else{
             printf("\n-----------------\n");
-            printf("%s的成绩是%d，他的学号是%d", p->next->name, p->next->grade, p->next->code);
+            printf("%s的成绩是%d，他的学号是%d\n", p->next->name, p->next->grade, p->next->code);
             printf("\n-----------------\n");
         }
     }
@@ -141,7 +139,7 @@ void removal(){
     skip();
 
     printf("\n-----------------\n");
-    printf("\n已消灭该学生。\n");
+    printf("已消灭该学生。");
     printf("\n-----------------\n");
 }
 
@@ -150,6 +148,11 @@ void skip(){
     p->next = p->next->next;
     free(s);
 }
+
+void swap(){
+
+}
+
 
 void createNew() {
     char nameInput[18];
@@ -206,30 +209,38 @@ void showMenu() {
     switch (result) {
         case 1:
             insert();
+            system("read -n 1 -s -p \"任务完成。按下 Enter 键返回菜单。\"");
+            indexing();
             showMenu();
             break;
         case 2:
             removal();
+            system("read -n 1 -s -p \"任务完成。按下 Enter 键返回菜单。\"");
+            indexing();
             showMenu();
             break;
         case 3:
             searchMenu();
+            system("read -n 1 -s -p \"任务完成。按下 Enter 键返回菜单。\"");
             showMenu();
             break;
         case 4:
             indexing();
+            system("read -n 1 -s -p \"任务完成。按下 Enter 键返回菜单。\"");
             showMenu();
             break;
         case 5:
             break;
         case 6:
             displayAll();
+            system("read -n 1 -s -p \"任务完成。按下 Enter 键返回菜单。\"");
             showMenu();
             break;
         default:
             printf("\n-----------------\n");
             printf("我不理解。");
             printf("\n-----------------\n");
+            system("read -n 1 -s -p \"请输入正确数字。按下 Enter 键返回菜单。\"");
             showMenu();
     };
 }
