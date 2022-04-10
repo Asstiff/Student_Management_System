@@ -153,12 +153,33 @@ void skip(){
     free(s);
 }
 
+
 void swap(){
+    p = head;
+    s = head;
     char nameCache[18];
-    int codeCache;
     int gradeCache;
+    int codeCache;
+    for(int i = 0; i < studentNumber-2; i++){
+        p = s;
+        for(int j = i; i < studentNumber-2; j++){
+            if(p->next->grade < p->next->next->grade){
+                strcpy(nameCache, p->next->next->name);
+                strcpy(p->next->next->name, p->next->name);
+                strcpy(p->next->name, nameCache);
 
+                gradeCache = p->next->next->grade;
+                p->next->next->grade = p->next->grade;
+                p->next->grade = gradeCache;
 
+                codeCache = p->next->next->code;
+                p->next->next->code = p->next->code;
+                p->next->code = codeCache;
+            }
+            p = p->next;
+        }
+        s = s->next;
+    }
 }
 
 
