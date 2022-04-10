@@ -30,12 +30,7 @@ void displayAll(){
     p = head;
     printf("\n-----------------\n");
     while (p->next != NULL){
-        if (p->next->index) {
-            printf("\n- %s -\n成绩：%d\n学号：%d\n索引：%d\n", p->next->name, p->next->grade, p->next->code, p->next->index);
-        }
-        else{
-            printf("\n- %s -\n成绩：%d\n学号：%d\n", p->next->name, p->next->grade, p->next->code);
-        }
+        printf("\n- %s -\n成绩：%d\n学号：%d\n索引：%d\n", p->next->name, p->next->grade, p->next->code, p->next->index);
         p = p->next;
     }
     printf("\n-----------------\n");
@@ -69,16 +64,9 @@ void searchByName(){
         p = p->next;
     }
     if(p->next){
-        if (p->next->index) {
-            printf("\n-----------------\n");
-            printf("- %s -\n成绩：%d\n学号：%d\n索引：%d", p->next->name, p->next->grade, p->next->code, p->next->index);
-            printf("\n-----------------\n");
-        }
-        else{
-            printf("\n-----------------\n");
-            printf("- %s -\n成绩：%d\n学号：%d", p->next->name, p->next->grade, p->next->code);
-            printf("\n-----------------\n");
-        }
+        printf("\n-----------------\n");
+        printf("- %s -\n成绩：%d\n学号：%d\n索引：%d", p->next->name, p->next->grade, p->next->code, p->next->index);
+        printf("\n-----------------\n");
     }
     else{
         printf("\n-----------------\n");
@@ -100,16 +88,9 @@ void searchByCode(){
         p = p->next;
     }
     if(p->next){
-        if (p->next->index) {
-            printf("\n-----------------\n");
-            printf("- %s -\n成绩：%d\n学号：%d\n索引：%d", p->next->name, p->next->grade, p->next->code, p->next->index);
-            printf("\n-----------------\n");
-        }
-        else{
-            printf("\n-----------------\n");
-            printf("- %s -\n成绩：%d\n学号：%d", p->next->name, p->next->grade, p->next->code);
-            printf("\n-----------------\n");
-        }
+        printf("\n-----------------\n");
+        printf("- %s -\n成绩：%d\n学号：%d\n索引：%d", p->next->name, p->next->grade, p->next->code, p->next->index);
+        printf("\n-----------------\n");
     }
     else{
         printf("\n-----------------\n");
@@ -127,16 +108,11 @@ void searchByGrade(){
     while (p->next != NULL) {
         if (p->next->grade == targetGrade) {
             numFound++;
-            if (p->next->index) {
-                printf("\n-----------------\n");
-                printf("- %s -\n成绩：%d\n学号：%d\n索引：%d", p->next->name, p->next->grade, p->next->code, p->next->index);
-                printf("\n-----------------\n");
-            } else {
-                printf("\n-----------------\n");
-                printf("- %s -\n成绩：%d\n学号：%d", p->next->name, p->next->grade, p->next->code);
-                printf("\n-----------------\n");
-            }
-        } else {
+            printf("\n-----------------\n");
+            printf("- %s -\n成绩：%d\n学号：%d\n索引：%d", p->next->name, p->next->grade, p->next->code, p->next->index);
+            printf("\n-----------------\n");
+        }
+        else {
         }
 
         p = p->next;
