@@ -6,7 +6,7 @@
 
 typedef struct node{
     char name[18];
-    char code[22];
+    int code;
     int grade;
     int index;
     struct node *next;
@@ -28,49 +28,33 @@ void indexing(){
 
 }
 
-char search(){
-    char target[18];
-    printf("输入姓名");
-    scanf("%s", target);
-    printf("%s", s->name);
-   while(p->next->name != target){
+void search(){
+    p = head;
+    char targetName[18];
+    scanf("%s", targetName);
+    while (p->next != NULL && strcmp(p->next->name,&targetName)){
         p = p->next;
     }
-    if (p->next){
-        printf("asda");
-        return p->next->name;
-    }
-    else{
-        printf("NOOOOOPE");
-        return NULL;
-    }
+    printf("\n%s的成绩是%d，他的学号是%d", p->next->name, p->next->grade, p->next->code);
+
+
 }
 
 
 
-
-
-void Init() {
-
-}
 
 void createNew() {
-    char name[18];
-    char code[22];
-    int grade;
-
-    scanf("%d", &grade);
-    scanf("%s", &name);
-    scanf("%s", &code);
-
+    char nameInput[18];
+    int codeInput;
+    int gradeInput;
+    scanf("%s", nameInput);
+    scanf("%d", &gradeInput);
+    scanf("%d", &codeInput);
     s = (NODE *) malloc(sizeof (NODE));
-
-    strcpy(s -> name, name);
-    strcpy(s -> code, code);
-    s->grade = grade;
-
+    strcpy(s->name, nameInput);
+    s->grade = gradeInput;
+    s->code = codeInput;
     s->next = p->next;
-
     p->next = s;
     p = s;
 }
@@ -105,22 +89,23 @@ void showMenu() {
 
 
 int main() {
-    head = (NODE *) malloc(sizeof(NODE));
+    head = (NODE *) malloc(sizeof (NODE));
     head->next = NULL;
     p = head;
     for(int i = 0; i<1; i--) {
         createNew();
-        printf("%d\n", s->grade);
         printf("结果 - %s\n", p->name);
-        printf("结果 - %s\n", p->code);
         if(s->grade == 1){
             p = head;
+            printf("\n第一个学生是%s，他的成绩是%d，他的学号是%d", p->next->name, p->next->grade, p->next->code);
+            printf("\n第二个学生是%s，他的成绩是%d，他的学号是%d", head->next->next->name, head->next->next->grade, head->next->next->code);
             break;
         }
     }
 
 
     showMenu();
+
 
     return 0;
 }
