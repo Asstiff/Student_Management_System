@@ -29,22 +29,7 @@ void indexing(){
 }
 
 char search(){
-    char target[8];
-    printf("输入姓名");
-    scanf("%s", target);
-    printf(p->next->name);
-/*    while(p->name != target){
-        p = p->next;
-    }
-    if (p->next){
-        printf("asda");
-        return p->next->name;
-    }
-    else{
-        printf("NOOOOOPE");
-        return NULL;
-    }
-*/
+
 }
 
 
@@ -52,31 +37,11 @@ char search(){
 
 
 void Init() {
-    NODE *head =  (NODE *)malloc(sizeof(NODE));
-    head->next = NULL;
-    p = head;
-    s = head;
+
 }
 
 void createNew() {
-    char name[8];
-    char code[10];
-    int grade;
 
-    scanf("%d", &grade);
-    scanf("%s", &name);
-    scanf("%s", &code);
-
-    s = (NODE *) malloc(sizeof (NODE));
-
-    strcpy(s -> name, name);
-    strcpy(s -> code, code);
-    s->grade = grade;
-
-    s->next = p->next;
-
-    p->next = s;
-    p = s;
 }
 
 
@@ -109,20 +74,7 @@ void showMenu() {
 
 
 int main() {
-    Init();
-    for(int i = 0; i<1; i--) {
-        createNew();
-        printf("%d\n", s->grade);
-        printf("结果 - %s\n", p->name);
-        printf("结果 - %s\n", p->code);
-        if(s->grade == -1){
-            p = head;
-            break;
-        }
-    }
 
-
-    showMenu();
 
     return 0;
 }
