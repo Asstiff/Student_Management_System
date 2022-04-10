@@ -117,7 +117,34 @@ void searchByCode(){
     }
 }
 
+void searchByGrade(){
+    p = head;
+    int targetGrade;
+    int numFound = 0;
+    scanf("%d", &targetGrade);
+    while (p->next != NULL) {
+        if (p->next->grade == targetGrade) {
+            numFound++;
+            if (p->next->index) {
+                printf("\n-----------------\n");
+                printf("- %s -\n成绩：%d\n学号：%d\n索引：%d", p->next->name, p->next->grade, p->next->code, p->next->index);
+                printf("\n-----------------\n");
+            } else {
+                printf("\n-----------------\n");
+                printf("- %s -\n成绩：%d\n学号：%d", p->next->name, p->next->grade, p->next->code);
+                printf("\n-----------------\n");
+            }
+        } else {
+        }
 
+        p = p->next;
+    }
+    if(numFound == 0){
+        printf("\n-----------------\n");
+        printf("没有找到。");
+        printf("\n-----------------\n");
+    }
+}
 
 void insert(){
     printf("\n-----------------\n");
@@ -156,7 +183,7 @@ void skip(){
 }
 
 
-void swap(){
+void swapByGrade(){
     p = head;
     s = head;
     char nameCache[18];
@@ -166,6 +193,36 @@ void swap(){
         p = head->next;
         while(p->next){
             if(p->grade < p->next->grade){
+                strcpy(nameCache, p->next->name);
+                strcpy(p->next->name, p->name);
+                strcpy(p->name, nameCache);
+
+                gradeCache = p->next->grade;
+                p->next->grade = p->grade;
+                p->grade = gradeCache;
+
+                codeCache = p->next->code;
+                p->next->code = p->code;
+                p->code = codeCache;
+            }
+            p = p->next;
+        }
+    }
+    printf("\n-----------------\n");
+    printf("排序完成。");
+    printf("\n-----------------\n");
+}
+
+void swapByCode(){
+    p = head;
+    s = head;
+    char nameCache[18];
+    int gradeCache;
+    int codeCache;
+    for(int i = 0; i < studentNumber; i++){
+        p = head->next;
+        while(p->next){
+            if(p->code < p->next->code){
                 strcpy(nameCache, p->next->name);
                 strcpy(p->next->name, p->name);
                 strcpy(p->name, nameCache);
@@ -210,11 +267,29 @@ void createNew() {
 
 }
 
+void swapMenu(){
+    int result;
+    printf("\n1 - 根据成绩");
+    printf("\n2 - 根据学号");
+    printf("\n\n输入你中意的数字…\n");
+    scanf("%d", &result);
+
+    switch (result) {
+        case 1:
+            swapByGrade();
+            break;
+        case 2:
+            swapByCode();
+            break;
+    };
+}
+
 
 void searchMenu(){
     int result;
     printf("\n1 - 根据名字");
     printf("\n2 - 根据学号");
+    printf("\n3 - 根据成绩");
     printf("\n\n输入你中意的数字…\n");
     scanf("%d", &result);
 
@@ -224,6 +299,9 @@ void searchMenu(){
             break;
         case 2:
             searchByCode();
+            break;
+        case 3:
+            searchByGrade();
             break;
     };
 }
@@ -264,7 +342,7 @@ void showMenu() {
             showMenu();
             break;
         case 5:
-            swap();
+            swapMenu();
             showMenu();
             break;
         case 6:
