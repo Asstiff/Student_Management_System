@@ -82,8 +82,9 @@ void searchByName(){
     }
     else{
         printf("\n-----------------\n");
-        printf("没有找到。");
+        printf("没有找到，请重新输入。\n");
         printf("\n-----------------\n");
+        searchByName();
     }
 }
 
@@ -112,8 +113,9 @@ void searchByCode(){
     }
     else{
         printf("\n-----------------\n");
-        printf("没有找到。");
+        printf("没有找到，请重新输入。\n");
         printf("\n-----------------\n");
+        searchByCode();
     }
 }
 
@@ -141,8 +143,9 @@ void searchByGrade(){
     }
     if(numFound == 0){
         printf("\n-----------------\n");
-        printf("没有找到。");
+        printf("没有找到，请重新输入。\n");
         printf("\n-----------------\n");
+        searchByGrade();
     }
 }
 
@@ -222,7 +225,7 @@ void swapByCode(){
     for(int i = 0; i < studentNumber; i++){
         p = head->next;
         while(p->next){
-            if(p->code < p->next->code){
+            if(p->code > p->next->code){
                 strcpy(nameCache, p->next->name);
                 strcpy(p->next->name, p->name);
                 strcpy(p->name, nameCache);
