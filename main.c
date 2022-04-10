@@ -28,15 +28,17 @@ void searchMenu();
 
 void displayAll(){
     p = head;
+    printf("\n-----------------\n");
     while (p->next != NULL){
         if (p->next->index) {
-            printf("\n%s的成绩是%d，他的学号是%d，他的索引是%d", p->next->name, p->next->grade, p->next->code, p->next->index);
+            printf("\n- %s -\n成绩：%d\n学号：%d\n索引：%d\n", p->next->name, p->next->grade, p->next->code, p->next->index);
         }
         else{
-            printf("\n%s的成绩是%d，他的学号是%d", p->next->name, p->next->grade, p->next->code);
+            printf("\n- %s -\n成绩：%d\n学号：%d\n", p->next->name, p->next->grade, p->next->code);
         }
         p = p->next;
     }
+    printf("\n-----------------\n");
 };
 
 
@@ -69,12 +71,12 @@ void searchByName(){
     if(p->next){
         if (p->next->index) {
             printf("\n-----------------\n");
-            printf("%s的成绩是%d，他的学号是%d，他的索引是%d", p->next->name, p->next->grade, p->next->code, p->next->index);
+            printf("- %s -\n成绩：%d\n学号：%d\n索引：%d", p->next->name, p->next->grade, p->next->code, p->next->index);
             printf("\n-----------------\n");
         }
         else{
             printf("\n-----------------\n");
-            printf("%s的成绩是%d，他的学号是%d", p->next->name, p->next->grade, p->next->code);
+            printf("- %s -\n成绩：%d\n学号：%d", p->next->name, p->next->grade, p->next->code);
             printf("\n-----------------\n");
         }
     }
@@ -99,12 +101,12 @@ void searchByCode(){
     if(p->next){
         if (p->next->index) {
             printf("\n-----------------\n");
-            printf("%s的成绩是%d，他的学号是%d，他的索引是%d", p->next->name, p->next->grade, p->next->code, p->next->index);
+            printf("- %s -\n成绩：%d\n学号：%d\n索引：%d", p->next->name, p->next->grade, p->next->code, p->next->index);
             printf("\n-----------------\n");
         }
         else{
             printf("\n-----------------\n");
-            printf("%s的成绩是%d，他的学号是%d", p->next->name, p->next->grade, p->next->code);
+            printf("- %s -\n成绩：%d\n学号：%d", p->next->name, p->next->grade, p->next->code);
             printf("\n-----------------\n");
         }
     }
@@ -297,13 +299,15 @@ int main() {
         printf("\n录入初始数据。");
         printf("\n｜名称｜ ｜成绩｜ ｜学号｜      %d/%d\n", i+1, count);
         createNew();
-        printf("结果 - %s\n", p->name);
+        printf("已录入%s的信息\n", p->name);
         if(s->grade == 1){
             p = head;
             break;
         }
     }
+
     ifInitialized = 1;
+
     indexing();
     showMenu();
 
