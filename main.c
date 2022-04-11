@@ -41,6 +41,7 @@ void displayAll(){
         }
         printf("\n-----------------\n");
     }
+    system("read -n 1 -s -p \"按下 Enter 键返回菜单。\"");
 };
 
 
