@@ -125,15 +125,17 @@ void searchByGrade(){
 }
 
 void insert(){
-    printf("\n-----------------\n");
-    printf("你想在哪个学生后面插入？");
-    printf("\n-----------------\n");
+    if (studentNumber != 0) {
+        printf("\n-----------------\n");
+        printf("你想在哪个学生后面插入？");
+        printf("\n-----------------\n");
 
-    searchByName();
-    s = p;
-
+        searchByName();
+        s = p;
+    } else{
+    }
     printf("\n-----------------\n");
-    printf("已找到。请输入插入学生的数据");
+    printf("请输入插入学生的数据");
     printf("\n-----------------\n");
 
     createNew();
@@ -233,7 +235,7 @@ void createNew() {
     strcpy(s->name, nameInput);
     s->grade = gradeInput;
     s->code = codeInput;
-    if(ifInitialized == 0){
+    if(ifInitialized == 0 || studentNumber == 0){
         s->next = p->next;
         p->next = s;
         p = s;
