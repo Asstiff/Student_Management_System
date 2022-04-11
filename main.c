@@ -26,13 +26,21 @@ void searchMenu();
 
 
 void displayAll(){
-    p = head;
-    printf("\n-----------------\n");
-    while (p->next != NULL){
-        printf("\n- %s -\n成绩：%d\n学号：%d\n索引：%d\n", p->next->name, p->next->grade, p->next->code, p->next->index);
-        p = p->next;
+    if(studentNumber==0){
+        printf("\n-----------------\n");
+        printf("没有学生，请先录入。");
+        printf("\n-----------------\n");
+        system("read -n 1 -s -p \"按下 Enter 键返回菜单。\"");
     }
-    printf("\n-----------------\n");
+    else{
+        p = head;
+        printf("\n-----------------\n");
+        while (p->next != NULL){
+         printf("\n- %s -\n成绩：%d\n学号：%d\n索引：%d\n", p->next->name, p->next->grade, p->next->code, p->next->index);
+            p = p->next;
+        }
+        printf("\n-----------------\n");
+    }
 };
 
 
@@ -71,7 +79,7 @@ void searchByName(){
         printf("\n-----------------\n");
         printf("没有找到，请重新输入。");
         printf("\n-----------------\n");
-        searchByName();
+        searchMenu();
     }
 }
 
@@ -95,7 +103,7 @@ void searchByCode(){
         printf("\n-----------------\n");
         printf("没有找到，请重新输入。");
         printf("\n-----------------\n");
-        searchByCode();
+        searchMenu();
     }
 }
 
@@ -115,7 +123,7 @@ void searchByIndex(){
         printf("\n-----------------\n");
         printf("没有找到，请重新输入。");
         printf("\n-----------------\n");
-        searchByCode();
+        searchMenu();
     }
 }
 
@@ -140,7 +148,7 @@ void searchByGrade(){
         printf("\n-----------------\n");
         printf("没有找到，请重新输入。");
         printf("\n-----------------\n");
-        searchByGrade();
+        searchMenu();
     }
 }
 
@@ -152,8 +160,11 @@ void insert(){
 
         searchByName();
         s = p;
-    } else{
     }
+    else{
+
+    }
+
     printf("\n-----------------\n");
     printf("请输入插入学生的数据");
     printf("\n-----------------\n");
@@ -162,18 +173,25 @@ void insert(){
 }
 
 void removal(){
-    printf("\n-----------------\n");
-    printf("你想消灭哪个学生？");
-    printf("\n-----------------\n");
+    if(studentNumber==0){
+        printf("\n-----------------\n");
+        printf("没有学生，请先录入。");
+        printf("\n-----------------\n");
+    }
+    else {
+        printf("\n-----------------\n");
+        printf("你想消灭哪个学生？");
+        printf("\n-----------------\n");
 
-    searchByName();
-    s = p;
+        searchByName();
+        s = p;
 
-    skip();
+        skip();
 
-    printf("\n-----------------\n");
-    printf("已消灭该学生。");
-    printf("\n-----------------\n");
+        printf("\n-----------------\n");
+        printf("已消灭该学生。");
+        printf("\n-----------------\n");
+    }
 }
 
 void skip(){
@@ -268,46 +286,81 @@ void createNew() {
 }
 
 void swapMenu(){
-    int result;
-    printf("\n1 - 根据成绩");
-    printf("\n2 - 根据学号");
-    printf("\n\n输入你中意的数字…\n");
-    scanf("%d", &result);
+    if(studentNumber==0){
+        printf("\n-----------------\n");
+        printf("没有学生，请先录入。");
+        printf("\n-----------------\n");
+        system("read -n 1 -s -p \"按下 Enter 键返回菜单。\"");
+    }
+    else {
+        int result;
+        printf("\n1 - 根据成绩");
+        printf("\n2 - 根据学号");
+        printf("\n3 - 返回主界面");
+        printf("\n\n输入你中意的数字…\n");
+        scanf("%d", &result);
 
-    switch (result) {
-        case 1:
-            swapByGrade();
-            break;
-        case 2:
-            swapByCode();
-            break;
-    };
+        switch (result) {
+            case 1:
+                swapByGrade();
+                break;
+            case 2:
+                swapByCode();
+                break;
+            case 3:
+                showMenu();
+                break;
+            default:
+                printf("\n-----------------\n");
+                printf("我不理解。");
+                printf("\n-----------------\n");
+                system("read -n 1 -s -p \"请输入正确数字。按下 Enter 键返回菜单。\"");
+                swapMenu();
+        };
+    }
 }
 
 
 void searchMenu(){
-    int result;
-    printf("\n1 - 根据名字");
-    printf("\n2 - 根据学号");
-    printf("\n3 - 根据成绩");
-    printf("\n4 - 根据索引");
-    printf("\n\n输入你中意的数字…\n");
-    scanf("%d", &result);
+    if(studentNumber==0){
+        printf("\n-----------------\n");
+        printf("没有学生，请先录入。");
+        printf("\n-----------------\n");
+    }
+    else {
+        int result;
+        printf("\n1 - 根据名字");
+        printf("\n2 - 根据学号");
+        printf("\n3 - 根据成绩");
+        printf("\n4 - 根据索引");
+        printf("\n5 - 返回主界面");
+        printf("\n\n输入你中意的数字…\n");
+        scanf("%d", &result);
 
-    switch (result) {
-        case 1:
-            searchByName();
-            break;
-        case 2:
-            searchByCode();
-            break;
-        case 3:
-            searchByGrade();
-            break;
-        case 4:
-            searchByIndex();
-            break;
-    };
+        switch (result) {
+            case 1:
+                searchByName();
+                break;
+            case 2:
+                searchByCode();
+                break;
+            case 3:
+                searchByGrade();
+                break;
+            case 4:
+                searchByIndex();
+                break;
+            case 5:
+                showMenu();
+                break;
+            default:
+                printf("\n-----------------\n");
+                printf("我不理解。");
+                printf("\n-----------------\n");
+                system("read -n 1 -s -p \"请输入正确数字。按下 Enter 键返回菜单。\"");
+                searchMenu();
+        };
+    }
 }
 
 void showMenu() {
@@ -325,24 +378,24 @@ void showMenu() {
     switch (result) {
         case 1:
             insert();
-            system("read -n 1 -s -p \"任务完成。按下 Enter 键返回菜单。\"");
+            system("read -n 1 -s -p \"按下 Enter 键返回菜单。\"");
             indexing();
             showMenu();
             break;
         case 2:
             removal();
-            system("read -n 1 -s -p \"任务完成。按下 Enter 键返回菜单。\"");
+            system("read -n 1 -s -p \"按下 Enter 键返回菜单。\"");
             indexing();
             showMenu();
             break;
         case 3:
             searchMenu();
-            system("read -n 1 -s -p \"任务完成。按下 Enter 键返回菜单。\"");
+            system("read -n 1 -s -p \"按下 Enter 键返回菜单。\"");
             showMenu();
             break;
         case 4:
             indexing();
-            system("read -n 1 -s -p \"任务完成。按下 Enter 键返回菜单。\"");
+            system("read -n 1 -s -p \"按下 Enter 键返回菜单。\"");
             showMenu();
             break;
         case 5:
