@@ -99,6 +99,26 @@ void searchByCode(){
     }
 }
 
+void searchByIndex(){
+    p = head;
+    int targetIndex;
+    scanf("%d", &targetIndex);
+    while (p->next != NULL && p->next->index != targetIndex){
+        p = p->next;
+    }
+    if(p->next){
+        printf("\n-----------------\n");
+        printf("- %s -\n成绩：%d\n学号：%d\n索引：%d", p->next->name, p->next->grade, p->next->code, p->next->index);
+        printf("\n-----------------\n");
+    }
+    else{
+        printf("\n-----------------\n");
+        printf("没有找到，请重新输入。");
+        printf("\n-----------------\n");
+        searchByCode();
+    }
+}
+
 void searchByGrade(){
     p = head;
     int targetGrade;
@@ -142,24 +162,21 @@ void insert(){
 }
 
 void removal(){
-    printf("\n-----------------\n");
-    printf("你想消灭哪个学生？");
-    printf("\n-----------------\n");
-
-    searchByName();
-    s = p;
 
     skip();
 
-    printf("\n-----------------\n");
-    printf("已消灭该学生。");
-    printf("\n-----------------\n");
 }
 
 void skip(){
+    s = p;
+
     s = p->next;
+
     p->next = p->next->next;
     free(s);
+    printf("\n-----------------\n");
+    printf("已消灭该学生。");
+    printf("\n-----------------\n");
 }
 
 
@@ -270,6 +287,7 @@ void searchMenu(){
     printf("\n1 - 根据名字");
     printf("\n2 - 根据学号");
     printf("\n3 - 根据成绩");
+    printf("\n4 - 根据索引");
     printf("\n\n输入你中意的数字…\n");
     scanf("%d", &result);
 
@@ -283,8 +301,41 @@ void searchMenu(){
         case 3:
             searchByGrade();
             break;
+        case 4:
+            searchByIndex();
+            break;
     };
 }
+
+void removeMenu(){
+    int result;
+    printf("\n1 - 根据名字");
+    printf("\n2 - 根据学号");
+    printf("\n3 - 根据成绩");
+    printf("\n4 - 根据索引");
+    printf("\n\n输入你中意的数字…\n");
+    scanf("%d", &result);
+
+    switch (result) {
+        case 1:
+            printf("\n-----------------\n");
+            printf("你想消灭哪个学生？");
+            printf("\n-----------------\n");
+            searchByName();
+            skip();
+            break;
+        case 2:
+            searchByCode();
+            break;
+        case 3:
+            searchByGrade();
+            break;
+        case 4:
+            searchByIndex();
+            break;
+    };
+}
+
 
 void showMenu() {
     int result;
@@ -306,7 +357,7 @@ void showMenu() {
             showMenu();
             break;
         case 2:
-            removal();
+            removeMenu();
             system("read -n 1 -s -p \"任务完成。按下 Enter 键返回菜单。\"");
             indexing();
             showMenu();
