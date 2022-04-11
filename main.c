@@ -21,7 +21,6 @@ NODE *head, *p, *s;
 
 void showMenu();
 void createNew();
-void skip();
 void searchMenu();
 void removal();
 void insert();
