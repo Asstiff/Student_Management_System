@@ -4,6 +4,7 @@
 
 int ifInitialized = 0;
 int studentNumber;
+int status;
 
 typedef struct node{
     char name[18];
@@ -22,6 +23,8 @@ void showMenu();
 void createNew();
 void skip();
 void searchMenu();
+void removal();
+void insert();
 
 
 
@@ -67,6 +70,7 @@ void indexing(){
 void searchByName(){
     p = head;
     char targetName[18];
+    printf("输入查找的名字…\n");
     scanf("%s", targetName);
     while (p->next != NULL && strcmp(p->next->name,&targetName)){
         p = p->next;
@@ -75,6 +79,15 @@ void searchByName(){
         printf("\n-----------------\n");
         printf("- %s -\n成绩：%d\n学号：%d\n索引：%d", p->next->name, p->next->grade, p->next->code, p->next->index);
         printf("\n-----------------\n");
+        if(status == 1){
+            removal();
+        }
+        if(status == -1){
+            printf("\n-----------------\n");
+            printf("请输入插入学生的数据");
+            printf("\n-----------------\n");
+            createNew();
+        }
     }
     else{
         printf("\n-----------------\n");
@@ -91,6 +104,7 @@ void searchByName(){
 void searchByCode(){
     p = head;
     int targetCode;
+    printf("输入查找的学号…\n");
     scanf("%d", &targetCode);
     while (p->next != NULL && p->next->code != targetCode){
         p = p->next;
@@ -99,6 +113,15 @@ void searchByCode(){
         printf("\n-----------------\n");
         printf("- %s -\n成绩：%d\n学号：%d\n索引：%d", p->next->name, p->next->grade, p->next->code, p->next->index);
         printf("\n-----------------\n");
+        if(status == 1){
+            removal();
+        }
+        if(status == -1){
+            printf("\n-----------------\n");
+            printf("请输入插入学生的数据");
+            printf("\n-----------------\n");
+            createNew();
+        }
     }
     else{
         printf("\n-----------------\n");
@@ -111,6 +134,7 @@ void searchByCode(){
 void searchByIndex(){
     p = head;
     int targetIndex;
+    printf("输入查找的索引…\n");
     scanf("%d", &targetIndex);
     while (p->next != NULL && p->next->index != targetIndex){
         p = p->next;
@@ -119,6 +143,15 @@ void searchByIndex(){
         printf("\n-----------------\n");
         printf("- %s -\n成绩：%d\n学号：%d\n索引：%d", p->next->name, p->next->grade, p->next->code, p->next->index);
         printf("\n-----------------\n");
+        if(status == 1){
+            removal();
+        }
+        if(status == -1){
+            printf("\n-----------------\n");
+            printf("请输入插入学生的数据");
+            printf("\n-----------------\n");
+            createNew();
+        }
     }
     else{
         printf("\n-----------------\n");
@@ -129,76 +162,67 @@ void searchByIndex(){
 }
 
 void searchByGrade(){
-    p = head;
-    int targetGrade;
-    int numFound = 0;
-    scanf("%d", &targetGrade);
-    while (p->next != NULL) {
-        if (p->next->grade == targetGrade) {
-            numFound++;
-            printf("\n-----------------\n");
-            printf("- %s -\n成绩：%d\n学号：%d\n索引：%d", p->next->name, p->next->grade, p->next->code, p->next->index);
-            printf("\n-----------------\n");
-        }
-        else {
-        }
-
-        p = p->next;
-    }
-    if(numFound == 0){
-        printf("\n-----------------\n");
-        printf("没有找到，请重新输入。");
-        printf("\n-----------------\n");
+    if(status == 1){
+        system("read -n 1 -s -p \"暂不支持消灭所有特定成绩的学生。\n按下 Enter 键返回菜单。\"");
         searchMenu();
+    }
+    if(status == -1){
+        system("read -n 1 -s -p \"暂不支持添加在所有特定成绩的学生后面。\n按下 Enter 键返回菜单。\"");
+        searchMenu();
+    }
+    else{
+        p = head;
+        int targetGrade;
+        int numFound = 0;
+        printf("输入查找的目标…");
+        scanf("%d", &targetGrade);
+        while (p->next != NULL) {
+            if (p->next->grade == targetGrade) {
+                numFound++;
+                printf("\n-----------------\n");
+                printf("- %s -\n成绩：%d\n学号：%d\n索引：%d", p->next->name, p->next->grade, p->next->code, p->next->index);
+                printf("\n-----------------\n");
+
+            }
+            else {
+            }
+
+            p = p->next;
+        }
+        if(numFound == 0){
+            printf("\n-----------------\n");
+            printf("没有找到，请重新输入。");
+            printf("\n-----------------\n");
+            searchMenu();
+        }
     }
 }
 
 void insert(){
     if (studentNumber != 0) {
-        printf("\n-----------------\n");
-        printf("你想在哪个学生后面插入？");
-        printf("\n-----------------\n");
-
-        searchByName();
         s = p;
+        searchMenu();
     }
     else{
+        printf("\n-----------------\n");
+        printf("请输入插入学生的数据");
+        printf("\n-----------------\n");
 
+        createNew();
     }
 
-    printf("\n-----------------\n");
-    printf("请输入插入学生的数据");
-    printf("\n-----------------\n");
-
-    createNew();
 }
 
 void removal(){
-    if(studentNumber==0){
-        printf("\n-----------------\n");
-        printf("没有学生，请先录入。");
-        printf("\n-----------------\n");
-    }
-    else {
-        printf("\n-----------------\n");
-        printf("你想消灭哪个学生？");
-        printf("\n-----------------\n");
 
-        searchByName();
-        s = p;
-
-        skip();
-
-        printf("\n-----------------\n");
-        printf("已消灭该学生。");
-        printf("\n-----------------\n");
-    }
-}
-
-void skip(){
     s = p->next;
     p->next = p->next->next;
     free(s);
+
+
+    printf("\n-----------------\n");
+    printf("已消灭该学生。");
+    printf("\n-----------------\n");
 }
 
 
@@ -267,6 +291,7 @@ void createNew() {
     char nameInput[18];
     int codeInput;
     int gradeInput;
+    printf("\n｜名称｜ ｜成绩｜ ｜学号｜\n");
     scanf("%s", nameInput);
     scanf("%d", &gradeInput);
     scanf("%d", &codeInput);
@@ -365,6 +390,8 @@ void searchMenu(){
 }
 
 void showMenu() {
+    p = head;
+    s = head;
     int result;
     printf("\n1 - 插入数据");
     printf("\n2 - 删除数据");
@@ -378,13 +405,17 @@ void showMenu() {
 
     switch (result) {
         case 1:
+            status = -1;
             insert();
+            status = 0;
             system("read -n 1 -s -p \"按下 Enter 键返回菜单。\"");
             indexing();
             showMenu();
             break;
         case 2:
-            removal();
+            status = 1;
+            searchMenu();
+            status = 0;
             system("read -n 1 -s -p \"按下 Enter 键返回菜单。\"");
             indexing();
             showMenu();
@@ -430,14 +461,14 @@ int main() {
     printf("\n输入初始数据个数\n");
     int count;
     scanf("%d", &count);
+    printf("\n录入初始数据。");
     for(int i = 0; i<count; i++) {
-
-        printf("\n录入初始数据。");
-        printf("\n｜名称｜ ｜成绩｜ ｜学号｜      %d/%d\n", i+1, count);
+        printf("\n\n- %d/%d -", i+1, count);
         createNew();
         printf("已录入%s的信息\n", p->name);
     }
 
+    status = 0;
     ifInitialized = 1;
 
     indexing();
